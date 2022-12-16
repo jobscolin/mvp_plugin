@@ -1,7 +1,6 @@
 package other
 
 import com.android.tools.idea.wizard.template.*
-import com.sun.org.apache.xalan.internal.xsltc.compiler.Template
 import java.io.File
 
 /**

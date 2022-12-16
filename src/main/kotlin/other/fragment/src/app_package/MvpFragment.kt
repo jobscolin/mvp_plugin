@@ -43,7 +43,7 @@ class ${provider.pageName.value}Fragment extends BaseFragment<Fragment${provider
     }
     
     @Override
-    public View initView(){
+    public void initView(){
     
     }
     
