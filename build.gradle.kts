@@ -26,6 +26,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compileOnly(files("libs/wizard-template.jar"))
+}
+
 // Set the JVM language level used to build project. Use Java 11 for 2020.3+, and Java 17 for 2022.2+.
 kotlin {
     jvmToolchain(11)
@@ -87,7 +91,8 @@ tasks {
         changeNotes.set(provider {
             with(changelog) {
                 renderItem(
-                    getOrNull(properties("pluginVersion")) ?: getLatest(),
+                    getOrNull(properties("pluginVersion"))
+                        ?: runCatching { getLatest() }.getOrElse { getUnreleased() },
                     Changelog.OutputType.HTML,
                 )
             }
